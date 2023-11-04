@@ -1,0 +1,54 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1" author="alexey">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS layer;
+        </sql>
+    </changeSet>
+    <changeSet id="2" author="alexey">
+        <sql>
+        CREATE TABLE IF NOT EXISTS layer.customers (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(30),
+        surname VARCHAR(30),
+        age INTEGER,
+        phone_number VARCHAR(30)
+        );
+    </sql>
+    </changeSet>
+    <changeSet id="3" author="alexey">
+        <sql>
+            CREATE TABLE IF NOT EXISTS layer.orders
+            (
+                id
+                SERIAL
+                PRIMARY
+                KEY,
+                date
+                DATE,
+                customer_id
+                INTEGER
+                REFERENCES
+                layer
+                .
+                customers
+            (
+                id
+            ),
+                age INTEGER,
+                product_name VARCHAR
+            (
+                30
+            ),
+                amount VARCHAR
+            (
+                30
+            )
+                );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
